@@ -30,6 +30,23 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
+# EMAIL_USE_TLS = True 
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# EMAIL_HOST = 'smtp.gmail.com'
+
+# EMAIL_PORT = 587
+
+# EMAIL_USE_TLS = True
+
+# EMAIL_HOST_USER = 'iamfireanddeath14@gmail.com'
+
+# EMAIL_HOST_PASSWORD = 'bberjdhkqyweivxw'
+
+SITE_ID = 1
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,7 +54,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.postgres',
     'blog.apps.BlogConfig',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +97,11 @@ WSGI_APPLICATION = 'blog_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'Daniel',
+        'PASSWORD': 'Postgres',
+        'PORT': 5432
     }
 }
 
@@ -122,3 +146,5 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+TAGGIT_CASE_INSENSITIVE = True
